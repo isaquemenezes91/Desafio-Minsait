@@ -27,7 +27,7 @@ namespace Livraria.Models
         public int Edicao { get; set; }
 
         [Required,Range(0,1000)]
-        public string Quantidade_estoque { get; set; }
+        public int Quantidade_estoque { get; set; }
 
         [Required,MaxLength(150)]
         public string Editora { get; set; }
