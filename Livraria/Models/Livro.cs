@@ -11,16 +11,29 @@ namespace Livraria.Models
         public string Titulo { get; set; }
 
         [MaxLength(100)]
-        public string Subtitulo { get; set; }
+        public string? Subtitulo { get; set; }
 
         [MaxLength(500)]
-        public string Resumo { get; set; }
+        public string? Resumo { get; set; }
 
         [Required]
         public int Quantidade_de_paginas { get; set; }
 
-        [Required,Range(1,10000)]
+        [Required]
         public DateOnly Data_de_publicacao { get; set; }
+
+        [Range(1,20)]
+        public int Edicao { get; set; }
+
+        [Required,Range(0,100)]
+        public string Quantidade_estoque { get; set; }
+
+        [Required]
+        public Editora Editora { get; set; }
+
+        [Required]
+        public Autor Autor { get; set; }
+
 
 
     }

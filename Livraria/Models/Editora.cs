@@ -10,10 +10,6 @@ namespace Livraria.Models
         [Required, MaxLength(150)]
         public string Nome { get; set; }
 
-        [Required]
-        public int Editora_Id { get; set; }
-
-        [ForeignKey("Editora_Id")]
         public List<Livro> Livros { get; set; }
     }
 }
