@@ -17,7 +17,7 @@ builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<LivrariaContext>(
         options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
      );
-builder.Services.AddScoped<ILivroRepository,LivroRepository>();
+
 
 var app = builder.Build();
 

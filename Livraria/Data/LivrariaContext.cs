@@ -1,5 +1,6 @@
 ﻿using Livraria.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Livraria.Data
 {
@@ -9,10 +10,10 @@ namespace Livraria.Data
 
         public DbSet<Autor> Autores { get; set; }
 
-        public LivrariaContext(DbContextOptions options) : base(options) { }
+        public LivrariaContext(DbContextOptions<LivrariaContext> options) : base(options) { }
 
         public LivrariaContext(string conectionString) : base() { }
 
-        protected override void OnModelCreating(ModelBuilder builder) {  }
+        protected override void OnModelCreating(ModelBuilder builder) { base.OnModelCreating(builder); }
     }
 }
