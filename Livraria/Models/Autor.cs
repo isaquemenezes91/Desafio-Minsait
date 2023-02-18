@@ -10,7 +10,8 @@ namespace Livraria.Models
         [Required, MaxLength(50)]
         public string Nome { get; set; }
 
-        public DateOnly? Data_nascimento { get; set; }
+        [MaxLength(10)]
+        public string Data_nascimento { get; set; }
 
         public List<Livro> Livros { get; set; }
     }

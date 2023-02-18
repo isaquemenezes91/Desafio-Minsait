@@ -13,12 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddDbContext<LivrariaContext>(opt => {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("Livraria"));
-    opt.EnableSensitiveDataLogging(true);
-    
-});
-
+builder.Services.AddEntityFrameworkSqlServer()
+    .AddDbContext<LivrariaContext>(
+        options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+     );
 builder.Services.AddScoped<ILivroRepository,LivroRepository>();
 
 var app = builder.Build();

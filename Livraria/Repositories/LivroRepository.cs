@@ -13,37 +13,37 @@ namespace Livraria.Repositories
             _context = context;
         }
 
-        public async Task<Livro> Create(Livro livro)
+        public async Task<Autor> Create(Autor autor)
         {
-            _context.Livros.Add(livro); 
+            _context.Autores.Add(autor); 
             await _context.SaveChangesAsync();
-            return livro;
+            return autor;
         }
 
-        public async Task<IEnumerable<Livro>> GetAll()
+        public async Task<IEnumerable<Autor>> GetAll()
         {
-           return await _context.Livros.ToListAsync();
+           return await _context.Autores.ToListAsync();
         }
 
-        public async Task<Livro> Get(string nome)
+        public async Task<Autor> Get(string nome)
         {
-            return await _context.Livros.FindAsync(nome);
+            return await _context.Autores.FindAsync(nome);
         }
-        public async Task<Livro> GetId(int Id)
+        public async Task<Autor> GetId(int Id)
         {
-            return await _context.Livros.FindAsync(Id);
+            return await _context.Autores.FindAsync(Id);
         }
 
-        public async Task Update(Livro livro)
+        public async Task Update(Autor autor)
         {
-            _context.Entry(livro).State = EntityState.Modified;
+            _context.Entry(autor).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
         public async Task Delete(int Id)
         {
-            var DeleteLivro = await _context.Livros.FindAsync(Id);
-            _context.Livros.Remove(DeleteLivro);
+            var DeleteAutor= await _context.Autores.FindAsync(Id);
+            _context.Autores.Remove(DeleteAutor);
 
             await _context.SaveChangesAsync();
         }

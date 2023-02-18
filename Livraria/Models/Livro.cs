@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace Livraria.Models
 {
@@ -16,23 +17,22 @@ namespace Livraria.Models
         [MaxLength(500)]
         public string? Resumo { get; set; }
 
-        [Required]
+        [Required, Range(1,10000)]
         public int Quantidade_de_paginas { get; set; }
 
-        [Required]
-        public DateOnly Data_de_publicacao { get; set; }
+        [Required,MaxLength(10)]
+        public string Data_de_publicacao { get; set; }
 
         [Range(1,20)]
         public int Edicao { get; set; }
 
-        [Required,Range(0,100)]
+        [Required,Range(0,1000)]
         public string Quantidade_estoque { get; set; }
 
-        [Required]
-        public Editora Editora { get; set; }
+        [Required,MaxLength(150)]
+        public string Editora { get; set; }
 
-        [Required]
-        public Autor Autor { get; set; }
+        
 
 
 

@@ -4,11 +4,11 @@ namespace Livraria.Repositories
 {
     public interface ILivroRepository
     {
-        Task<IEnumerable<Livro>> GetAll();
-        Task<Livro> Get(string Nome);
-        Task<Livro> GetId(int Id);
-        Task<Livro> Create(Livro livro);
-        Task Update(Livro livro);
+        Task<IEnumerable<Autor>> GetAll();
+        Task<Autor> Get(string Nome);
+        Task<Autor> GetId(int Id);
+        Task<Autor> Create(Autor autor);
+        Task Update(Autor autor);
 
         Task Delete(int Id);
         

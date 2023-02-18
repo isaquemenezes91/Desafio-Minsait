@@ -8,7 +8,6 @@ namespace Livraria.Data
         public DbSet<Livro> Livros { get; set; }
 
         public DbSet<Autor> Autores { get; set; }
-        public DbSet<Editora> Editoras { get; set; }
 
         public LivrariaContext(DbContextOptions options) : base(options) { }
 

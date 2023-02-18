@@ -16,48 +16,48 @@ namespace Livraria.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Livro>> GetAll()
+        public async Task<IEnumerable<Autor>> GetAll()
         {
             return await _repository.GetAll();
         }
 
         [HttpGet("{Nome}")]
-        public async Task<ActionResult<Livro>> Get(string Nome)
+        public async Task<ActionResult<Autor>> Get(string Nome)
         {
             return await _repository.Get(Nome);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Livro>> Create([FromBody]Livro livro)
+        public async Task<ActionResult<Autor>> Create([FromBody]Autor autor)
         {
-            var novoLivro = await _repository.Create(livro);
-            return CreatedAtAction(nameof(GetAll),new {id = novoLivro.Id},novoLivro);
+            var novoAutor = await _repository.Create(autor);
+            return CreatedAtAction(nameof(GetAll),new {id = novoAutor.Id},novoAutor);
         }
 
         [HttpDelete("{Id}")]
-        public async Task<ActionResult<Livro>> Delete(int Id)
+        public async Task<ActionResult<Autor>> Delete(int Id)
         {
-            var deleteLivro = await _repository.GetId(Id);
-            if (deleteLivro == null)
+            var deleteAutor = await _repository.GetId(Id);
+            if (deleteAutor == null)
             {
                 return NotFound();
             }
            
-            await _repository.Delete(deleteLivro.Id);
+            await _repository.Delete(deleteAutor.Id);
             
             return NoContent();
         }
 
         [HttpPut("{Id}")]
-        public async Task<ActionResult> Update(int Id, [FromBody] Livro livro)
+        public async Task<ActionResult> Update(int Id, [FromBody] Autor autor)
         {
-            if (Id == livro.Id)
+            if (Id == autor.Id)
             {
                 return BadRequest();
             }
 
              
-            await _repository.Update(livro);
+            await _repository.Update(autor);
            
             return NoContent();
         }
