@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
 
 namespace Livraria.Models
@@ -32,7 +33,7 @@ namespace Livraria.Models
         [Required,MaxLength(150)]
         public string Editora { get; set; }
 
-        [Required]
+        [ForeignKey("LivroId")]
         public ICollection<Autor> Autores { get; set; }
         
 
