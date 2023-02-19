@@ -1,12 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 
 namespace Livraria.Models
 {
     public class Livro
     {
+
         [Key]
+        [JsonIgnore]
         public int Id { get; set; }
 
         [Required, MaxLength(100)]
@@ -18,24 +22,29 @@ namespace Livraria.Models
         [MaxLength(500)]
         public string? Resumo { get; set; }
 
-        [Required, Range(1,10000)]
-        public int Quantidade_de_paginas { get; set; }
+        [Required, Range(1, 10000)]
+        public int QuantidadePaginas { get; set; }
 
-        [Required,MaxLength(10)]
-        public string Data_de_publicacao { get; set; }
+        [Required]
+        public DateTime DataPublicacao { get; set; }
 
-        [Range(1,20)]
-        public int Edicao { get; set; }
+        [Range(1, 20)]
+        public int? Edicao { get; set; }
 
-        [Required,Range(0,1000)]
-        public int Quantidade_estoque { get; set; }
+        [Required, Range(0, 1000)]
+        public int QuantidadeEstoque { get; set; }
 
-        [Required,MaxLength(150)]
+        [Required, MaxLength(150)]
         public string Editora { get; set; }
 
-        
-        public List<Autor> Autores { get; set; }
+        public ICollection<Autor> Autores { get; set; }
 
-       
+        [JsonIgnore]
+        public DateTime? DataCadastroSistema { get; set; }
+
+        [JsonIgnore]
+        public DateTime? DataUltimaAtualizacao { get; set; }
+
+
     }
 }
