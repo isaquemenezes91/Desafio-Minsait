@@ -80,4 +80,3 @@ C:\Users\isaqu\OneDrive\Documentos\GitHub\Desafio-Minsait\Livraria\bin\Debug\net
 C:\Users\isaqu\OneDrive\Documentos\GitHub\Desafio-Minsait\Livraria\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\isaqu\OneDrive\Documentos\GitHub\Desafio-Minsait\Livraria\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\isaqu\OneDrive\Documentos\GitHub\Desafio-Minsait\Livraria\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\isaqu\OneDrive\Documentos\GitHub\Desafio-Minsait\Livraria\bin\Debug\net6.0\AutoMapper.dll
