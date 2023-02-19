@@ -12,10 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var connectionString = builder.Configuration.GetConnectionString("DataBase");
 
-builder.Services.AddEntityFrameworkSqlServer()
-    .AddDbContext<LivrariaContext>(
-        options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+builder.Services.AddEntityFrameworkSqlServer().AddDbContext<LivrariaContext>(
+        options => options.UseSqlServer(connectionString)
      );
 
 
