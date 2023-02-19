@@ -3,6 +3,7 @@ using Livraria.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Livraria.Migrations
 {
     [DbContext(typeof(LivrariaContext))]
-    partial class LivrariaContextModelSnapshot : ModelSnapshot
+    [Migration("20230219014140_TesteRelacionamento")]
+    partial class TesteRelacionamento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,15 +26,15 @@ namespace Livraria.Migrations
 
             modelBuilder.Entity("AutorLivro", b =>
                 {
-                    b.Property<int>("AutorId")
+                    b.Property<int>("AutoresId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LivroId")
+                    b.Property<int>("LivrosId")
                         .HasColumnType("int");
 
-                    b.HasKey("AutorId", "LivroId");
+                    b.HasKey("AutoresId", "LivrosId");
 
-                    b.HasIndex("LivroId");
+                    b.HasIndex("LivrosId");
 
                     b.ToTable("AutorLivro");
                 });
@@ -108,13 +111,13 @@ namespace Livraria.Migrations
                 {
                     b.HasOne("Livraria.Models.Autor", null)
                         .WithMany()
-                        .HasForeignKey("AutorId")
+                        .HasForeignKey("AutoresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Livraria.Models.Livro", null)
                         .WithMany()
-                        .HasForeignKey("LivroId")
+                        .HasForeignKey("LivrosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

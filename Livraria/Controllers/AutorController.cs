@@ -10,10 +10,10 @@ namespace Livraria.Controllers
 
     public class AutorController:ControllerBase
     {
-        private readonly IAutorRepository _repository;
-        public AutorController(IAutorRepository repository, LivrariaContext _dbContext)
+        private readonly AutorRepository _repository;
+        public AutorController(LivrariaContext repository)
         {
-            _repository = repository;
+            _repository = new(repository);
         }
 
         [HttpGet]

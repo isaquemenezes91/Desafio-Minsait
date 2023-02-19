@@ -14,7 +14,13 @@ namespace Livraria.Models
         [MaxLength(10)]
         public string Data_nascimento { get; set; }
 
-        [ForeignKey("AutorId")]
-        public ICollection<Livro> Livros { get; set; }
+       
+        public List<Livro> Livros { get; set; }
+
+      
+
+        public Autor()
+        {
+        }
     }
 }
