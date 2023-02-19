@@ -2,13 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 
-namespace Livraria.Data
+namespace Livraria.Data.Context
 {
-    public class LivrariaContext: DbContext
+    public class LivrariaContext : DbContext
     {
         public DbSet<Livro> Livros { get; set; }
 
         public DbSet<Autor> Autores { get; set; }
+
+        public DbSet<LogErro> LogErros { get; set; }
 
         public LivrariaContext(DbContextOptions<LivrariaContext> options) : base(options) { }
 

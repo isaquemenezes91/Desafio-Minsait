@@ -1,5 +1,6 @@
-using Livraria.Data;
-using Livraria.Repositories;
+using Livraria.Data.Context;
+using Livraria.Data.Repositories;
+using Livraria.Manager.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var policyName = "_myAllowSpecificOrigins";
@@ -24,6 +25,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("DataBase");
 
