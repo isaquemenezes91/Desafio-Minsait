@@ -37,6 +37,7 @@ namespace Livraria.Controllers
                     {
                         LivroDto dto = new();
 
+                        dto.Id = livro.Id;
                         dto.Titulo = livro.Titulo;
                         dto.Subtitulo = livro.Subtitulo;
                         dto.Resumo = livro.Resumo;
@@ -46,8 +47,6 @@ namespace Livraria.Controllers
                         dto.Edicao = livro.Edicao;
                         dto.QuantidadeEstoque = livro.QuantidadeEstoque;
                         dto.Autores = livro.Autores;
-
-                        
 
                         retorno.Add(dto);
                     }
@@ -120,6 +119,50 @@ namespace Livraria.Controllers
                 return BadRequest(erroBadRequest);
             }
 
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Remover(int id)
+        {
+            try
+            {
+                var livroBase = _livroRepository.BuscarId(id);
+
+                if (livroBase == null)
+                    return BadRequest($"Id: {id} não foi encontrado!");
+
+                
+
+                _livroRepository.Delete(livroBase);
+                _livroRepository.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logRepository.Adicionar(ex);
+                return BadRequest(erroBadRequest);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult BuscarId(int id)
+        {
+            Livro livro = new();
+            try
+            {
+                livro = _livroRepository.BuscarId(id);
+                if(livro == null)
+                {
+                    return BadRequest($"Id: {id} não foi encontrado!");
+                }
+                return Ok(livro);
+            }
+            catch (Exception ex)
+            {
+                _logRepository.Adicionar(ex);
+                return BadRequest(erroBadRequest);
+            }
         }
 
     }

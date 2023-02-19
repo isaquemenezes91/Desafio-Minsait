@@ -39,11 +39,6 @@ namespace Livraria.Models
 
         public ICollection<Autor> Autores { get; set; }
 
-        [JsonIgnore]
-        public DateTime? DataCadastroSistema { get; set; }
-
-        [JsonIgnore]
-        public DateTime? DataUltimaAtualizacao { get; set; }
 
 
     }

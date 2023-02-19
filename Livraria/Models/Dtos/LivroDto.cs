@@ -5,7 +5,8 @@ namespace Livraria.Models.Dtos
 {
     public class LivroDto
     {
-
+        [Key]
+        public int Id { get; set; }
         [Required(ErrorMessage = "Campo Nome é obrigatório")]
         public string Titulo { get; set; }
 

@@ -12,7 +12,7 @@ namespace Livraria.Manager.Interfaces
         void Atualizar(Livro livro );
 
         void Delete(Livro livro);
-
+        
     }
 
 }

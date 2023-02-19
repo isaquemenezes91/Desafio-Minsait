@@ -27,7 +27,7 @@ namespace Livraria.Data.Repositories
 
         public void Atualizar(Livro livro)
         {
-            _ctx.Update(livro);
+            _ctx.Livros.Update(livro);
             _ctx.SaveChanges();
         }
 
@@ -35,7 +35,7 @@ namespace Livraria.Data.Repositories
 
         public Livro BuscarId(int Id)
         {
-            return _ctx.Livros.Include(i => i.Autores).FirstOrDefault(j => j.Id.Equals(Id));
+            return _ctx.Livros.Include(i => i.Autores).FirstOrDefault(j=>j.Id.Equals(Id));
         }
 
         public Livro BuscarNome(string Nome)
