@@ -32,6 +32,8 @@ namespace Livraria.Models
         [Required,MaxLength(150)]
         public string Editora { get; set; }
 
+        [Required]
+        public ICollection<Autor> Autores { get; set; }
         
 
 

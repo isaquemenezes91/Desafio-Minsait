@@ -13,6 +13,7 @@ namespace Livraria.Models
         [MaxLength(10)]
         public string Data_nascimento { get; set; }
 
-        public List<Livro> Livros { get; set; }
+        [Required]
+        public ICollection<Livro> Livros { get; set; }
     }
 }

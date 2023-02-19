@@ -1,4 +1,5 @@
-﻿using Livraria.Models;
+﻿using Livraria.Data;
+using Livraria.Models;
 using Livraria.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,10 +8,10 @@ namespace Livraria.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class LivrosController:ControllerBase
+    public class AutorController:ControllerBase
     {
-        private readonly ILivroRepository _repository;
-        public LivrosController(ILivroRepository repository)
+        private readonly IAutorRepository _repository;
+        public AutorController(IAutorRepository repository, LivrariaContext _dbContext)
         {
             _repository = repository;
         }

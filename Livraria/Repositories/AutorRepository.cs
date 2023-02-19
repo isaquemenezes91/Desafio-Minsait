@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Livraria.Repositories
 {
-    public class LivroRepository : IAutorRepository
+    public class AutorRepository : IAutorRepository
     {
         public readonly LivrariaContext _context;
 
-        public LivroRepository(LivrariaContext context)
+        public AutorRepository(LivrariaContext context)
         {
             _context = context;
         }

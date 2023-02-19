@@ -2,7 +2,7 @@
 
 namespace Livraria.Repositories
 {
-    public interface ILivroRepository
+    public interface IAutorRepository
     {
         Task<IEnumerable<Autor>> GetAll();
         Task<Autor> Get(string Nome);

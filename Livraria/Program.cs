@@ -2,7 +2,20 @@ using Livraria.Data;
 using Livraria.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+var policyName = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: policyName,
+                      builder =>
+                      {
+                          builder
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowAnyOrigin();
+                      });
+});
 
 // Add services to the container.
 
@@ -28,8 +41,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
+
+
+
 app.UseHttpsRedirection();
 
+app.UseCors(policyName);
 app.UseAuthorization();
 
 app.MapControllers();
