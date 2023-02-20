@@ -40,10 +40,6 @@ namespace Livraria.Data.Repositories
             return retorno;
         }
 
-        public Livro BuscarNome(string Nome)
-        {
-            return _ctx.Livros.Include(i => i.Autores).FirstOrDefault(j => j.Titulo.Equals(Nome));
-        }
 
         public void Delete(Livro livro)
         {
