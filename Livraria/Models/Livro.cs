@@ -10,7 +10,6 @@ namespace Livraria.Models
     {
 
         [Key]
-        [JsonIgnore]
         public int Id { get; set; }
 
         [Required, MaxLength(100)]
@@ -37,6 +36,7 @@ namespace Livraria.Models
         [Required, MaxLength(150)]
         public string Editora { get; set; }
 
+        [ForeignKey("LivroId")]
         public ICollection<Autor> Autores { get; set; }
 
 

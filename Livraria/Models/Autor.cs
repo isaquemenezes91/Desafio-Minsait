@@ -7,12 +7,13 @@ namespace Livraria.Models
     public class Autor
     {
         [Key]
-        [JsonIgnore]
         public int Id { get; set; }
 
         [Required, MaxLength(50)]
         public string Nome { get; set; }
 
+        [Required]
+        public int LivroId { get; set; }
 
     }
 }

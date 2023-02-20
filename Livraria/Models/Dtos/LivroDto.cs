@@ -17,6 +17,7 @@ namespace Livraria.Models.Dtos
         public string? Resumo { get; set; }
 
         [Required(ErrorMessage="Campo Nome é obrigatório")]
+        [Range(1, 10000)]
         public int QuantidadePaginas { get; set; }
 
         [Required(ErrorMessage = "Campo Nome é obrigatório")]

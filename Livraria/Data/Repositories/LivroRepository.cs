@@ -45,7 +45,10 @@ namespace Livraria.Data.Repositories
         {
             _ctx.Livros.Remove(livro);
         }
-
+        public void RemoverAutores(List<Autor> autores)
+        {
+            _ctx.Autores.RemoveRange(autores);
+        }
         public void SaveChanges()
         {
             _ctx.SaveChanges();

@@ -131,8 +131,6 @@ namespace Livraria.Controllers
                 if (livroBase == null)
                     return BadRequest($"Id: {id} não foi encontrado!");
 
-                
-
                 _livroRepository.Delete(livroBase);
                 _livroRepository.SaveChanges();
 
