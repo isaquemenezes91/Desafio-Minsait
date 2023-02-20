@@ -89,11 +89,11 @@ namespace Livraria.Controllers
         }
 
         [HttpPut("{Id}")]
-        public IActionResult Atualizar(int Id, Livro livro)
+        public IActionResult Atualizar(int Id, LivroDto livro)
         {
             try
             {
-                var livroBase = _livroRepository.BuscarId(Id);
+                var livroBase =  _livroRepository.BuscarId(Id);
                 if (livroBase == null)
                 {
                     return BadRequest($"Id: {Id} não foi encontrado!");
@@ -102,7 +102,7 @@ namespace Livraria.Controllers
                 livroBase.Titulo = livro.Titulo;
                 livroBase.Subtitulo = livro.Subtitulo;
                 livroBase.Resumo = livro.Resumo;
-                livroBase.DataPublicacao = livro.DataPublicacao;
+                livroBase.DataPublicacao = Convert.ToDateTime(livro.DataPublicacao);
                 livroBase.QuantidadePaginas = livro.QuantidadePaginas;
                 livroBase.Editora = livro.Editora;
                 livroBase.Edicao = livro.Edicao;

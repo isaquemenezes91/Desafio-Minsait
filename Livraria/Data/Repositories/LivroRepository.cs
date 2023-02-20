@@ -33,9 +33,11 @@ namespace Livraria.Data.Repositories
 
 
 
-        public Livro BuscarId(int Id)
+        public  Livro BuscarId(int Id)
         {
-            return _ctx.Livros.Include(i => i.Autores).FirstOrDefault(j=>j.Id.Equals(Id));
+            Livro retorno = new();
+            retorno =  _ctx.Livros.Include(i => i.Autores).FirstOrDefault(j => j.Id.Equals(Id));
+            return retorno;
         }
 
         public Livro BuscarNome(string Nome)
