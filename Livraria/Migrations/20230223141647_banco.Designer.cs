@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Livraria.Migrations
 {
     [DbContext(typeof(LivrariaContext))]
-    [Migration("20230219213107_att1")]
-    partial class att1
+    [Migration("20230223141647_banco")]
+    partial class banco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace Livraria.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("LivroId")
+                    b.Property<int>("LivroId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -125,7 +125,9 @@ namespace Livraria.Migrations
                 {
                     b.HasOne("Livraria.Models.Livro", null)
                         .WithMany("Autores")
-                        .HasForeignKey("LivroId");
+                        .HasForeignKey("LivroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Livraria.Models.Livro", b =>

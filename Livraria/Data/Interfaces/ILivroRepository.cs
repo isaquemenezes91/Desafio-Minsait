@@ -7,7 +7,7 @@ namespace Livraria.Manager.Interfaces
     {
         List<Livro> Buscar();
         Livro BuscarId(int Id);
-        void Adicionar(Livro livro);
+        bool Adicionar(Livro livro);
         void Atualizar(Livro livro );
 
         void Delete(Livro livro);

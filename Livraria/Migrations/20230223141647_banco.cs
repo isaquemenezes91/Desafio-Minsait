@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Livraria.Migrations
 {
     /// <inheritdoc />
-    public partial class Db : Migration
+    public partial class banco : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,13 +24,27 @@ namespace Livraria.Migrations
                     DataPublicacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Edicao = table.Column<int>(type: "int", nullable: true),
                     QuantidadeEstoque = table.Column<int>(type: "int", nullable: false),
-                    Editora = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    DataCadastroSistema = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DataUltimaAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    Editora = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Livros", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LogErros",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StackTrace = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Mensagem = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    InnerException = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    DataHoraRegistro = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogErros", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -40,8 +54,7 @@ namespace Livraria.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DataNascimento = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
-                    LivroId = table.Column<int>(type: "int", nullable: true)
+                    LivroId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,7 +63,8 @@ namespace Livraria.Migrations
                         name: "FK_Autores_Livros_LivroId",
                         column: x => x.LivroId,
                         principalTable: "Livros",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -64,6 +78,9 @@ namespace Livraria.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Autores");
+
+            migrationBuilder.DropTable(
+                name: "LogErros");
 
             migrationBuilder.DropTable(
                 name: "Livros");

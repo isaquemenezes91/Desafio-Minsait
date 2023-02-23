@@ -65,9 +65,11 @@ namespace Livraria.Controllers
         public ActionResult Adicionar(LivroDto dto)
         {
             Livro livro = new Livro();
+
             try
             {
                 
+
                 livro.Titulo = dto.Titulo;
                 livro.Subtitulo = dto.Subtitulo;
                 livro.Resumo = dto.Resumo;
@@ -78,8 +80,15 @@ namespace Livraria.Controllers
                 livro.QuantidadeEstoque = dto.QuantidadeEstoque;
                 livro.Autores = dto.Autores;
 
-                _livroRepository.Adicionar(livro);
-                return Ok(livro);
+                if (_livroRepository.Adicionar(livro))
+                {
+                    return BadRequest($"Livro Ja cadastrado");
+                }
+                else
+                {
+                    return Ok(livro);
+                }
+                
             }
             catch(Exception ex)
             {
