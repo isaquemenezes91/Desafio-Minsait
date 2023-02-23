@@ -8,6 +8,7 @@ Aplicação em .NET 6 para desenvolvimento de uma API
 - Editar
 - Excluir
 - Buscar
+- Validação de Livros ja cadastrado (titulo, subtitulo, e edição validam essa condição)
 - Acesso ao banco de dados
 
 
