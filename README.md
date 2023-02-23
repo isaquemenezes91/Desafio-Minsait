@@ -26,7 +26,7 @@ Projeto desenvolvido para gerenciar os livros de uma livraria, onde será cadast
 1. Agora tem-se que alterar no arquivo "appsettings.json" a connection string
 ```
 "ConnectionStrings": {
-    "DataBase": "Server={Seu Server};Database=LivrariaDb;Persist Security Info=True;TrustServerCertificate=True;User Id={seu user};Password={sua senha}"
+    "DataBase": "Server={Seu Server};Database=LivrariaDataBase;Persist Security Info=True;TrustServerCertificate=True;User Id={seu user};Password={sua senha}"
   }
 ```  
 2. Agora basta rodar o projeto no Visual Studio normalmente
